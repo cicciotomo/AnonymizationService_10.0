@@ -10,7 +10,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\AnonymizationService.EntityFrameworkCore\AnonymizationService.EntityFrameworkCore.csproj" />
     <ProjectReference Include="..\AnonymizationService.TestBase\AnonymizationService.TestBase.csproj" />
-    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="6.0.0" />
+    <PackageReference Include="Volo.Abp.EntityFrameworkCore.Sqlite" Version="7.0.0" />
   </ItemGroup>
 
   <ItemGroup>

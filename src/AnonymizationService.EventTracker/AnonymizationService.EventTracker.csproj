@@ -8,8 +8,8 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.ApplicationInsights" Version="2.21.0" />
-    <PackageReference Include="Volo.Abp.Core" Version="6.0.0" />
-    <PackageReference Include="Volo.Abp.Json" Version="6.0.0" />
+    <PackageReference Include="Volo.Abp.Core" Version="7.0.0" />
+    <PackageReference Include="Volo.Abp.Json" Version="7.0.0" />
   </ItemGroup>
 
 </Project>

@@ -16,13 +16,13 @@
   <ItemGroup>
     <PackageReference Include="Azure.Data.AppConfiguration" Version="1.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.AzureAppConfiguration" Version="5.1.0" />
-    <PackageReference Include="Volo.Abp.Account.Application" Version="6.0.0" />
-    <PackageReference Include="Volo.Abp.AspNetCore.SignalR" Version="6.0.0" />
-    <PackageReference Include="Volo.Abp.Identity.Application" Version="6.0.0" />
-    <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="6.0.0" />
-    <PackageReference Include="Volo.Abp.TenantManagement.Application" Version="6.0.0" />
-    <PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="6.0.0" />
-    <PackageReference Include="Volo.Abp.SettingManagement.Application" Version="6.0.0" />
+    <PackageReference Include="Volo.Abp.Account.Application" Version="7.0.0" />
+    <PackageReference Include="Volo.Abp.AspNetCore.SignalR" Version="7.0.0" />
+    <PackageReference Include="Volo.Abp.Identity.Application" Version="7.0.0" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="7.0.0" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Application" Version="7.0.0" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="7.0.0" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Application" Version="7.0.0" />
 	<PackageReference Include="ExcelMapper" Version="5.2.415" />
   </ItemGroup>
 
