@@ -1,0 +1,58 @@
+trigger:
+  batch: true
+  branches:
+    include:
+      - master
+      - develop
+  tags:
+    include:
+      - v.?.?.?
+      - v.?.?.??
+      - v.?.??.?
+      - v.?.??.??
+      - v.??.?.?
+      - v.??.??.?
+      - v.??.??.??
+
+resources:
+  repositories:
+    - repository: repo-templates
+      type: git
+      name: S-RACE/YAML
+      ref: refs/tags/v.0.5.0
+
+pool: 'infrastructure'
+
+stages:
+  - stage: BuildAndPush
+    displayName: Build .NET and Push Docker image anonymization-backend
+    jobs:
+      - template: template-workflow-dotnet.yml@repo-templates
+        parameters:
+          workflowId: 'AS_DBMigrator'
+          dotnetRestoreProjects: '$(Build.SourcesDirectory)/src/AnonymizationService.DbMigrator/AnonymizationService.DbMigrator.csproj'
+          dotnetRestoreFeedsToUse: 'config'
+          dotnetRestoreNugetConfigPath: '$(Build.SourcesDirectory)/NuGet.Config'
+          dotnetPublishPublishWebProjects: false
+          dotnetPublishProjects: '$(Build.SourcesDirectory)/src/AnonymizationService.DbMigrator/AnonymizationService.DbMigrator.csproj'
+          dotnetPublishArguments: '-c Release -o $(Build.SourcesDirectory)/src/AnonymizationService.DbMigrator/app/publish -r linux-x64 --self-contained'
+          dotnetPublishZipAfterPublish: false
+          dotnetPublishModifyOutputPath: false
+          dockerfilePath: '$(Build.SourcesDirectory)/src/AnonymizationService.DbMigrator/Dockerfile'
+          dockerBuildContext: '$(Build.SourcesDirectory)/src/AnonymizationService.DbMigrator/'
+          dockerImageName: 's-race/anonymization-dbmigrator'
+
+      - template: template-workflow-dotnet.yml@repo-templates
+        parameters:
+          workflowId: 'AS_Backend'
+          dotnetRestoreProjects: '$(Build.SourcesDirectory)/src/AnonymizationService.HttpApi.Host/AnonymizationService.HttpApi.Host.csproj'
+          dotnetRestoreFeedsToUse: 'config'
+          dotnetRestoreNugetConfigPath: '$(Build.SourcesDirectory)/NuGet.Config'
+          dotnetPublishPublishWebProjects: false
+          dotnetPublishProjects: '$(Build.SourcesDirectory)/src/AnonymizationService.HttpApi.Host/AnonymizationService.HttpApi.Host.csproj'
+          dotnetPublishArguments: '-c Release -o $(Build.SourcesDirectory)/src/AnonymizationService.HttpApi.Host/app/publish -r linux-x64 --self-contained'
+          dotnetPublishZipAfterPublish: false
+          dotnetPublishModifyOutputPath: false
+          dockerfilePath: '$(Build.SourcesDirectory)/src/AnonymizationService.HttpApi.Host/Dockerfile'
+          dockerBuildContext: '$(Build.SourcesDirectory)/src/AnonymizationService.HttpApi.Host/'
+          dockerImageName: 's-race/anonymization-backend'

@@ -1,0 +1,74 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<Import Project="..\..\common.props" />
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<RootNamespace>AnonymizationService</RootNamespace>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Jobs\ClinicalStateMachineJobs\**" />
+		<Compile Remove="Jobs\DicomStateMachineJobs\**" />
+		<Compile Remove="Jobs\LaboratoryStateMachineJobs\**" />
+		<Compile Remove="StateMachines\ClinicalStateMachine\**" />
+		<Compile Remove="StateMachines\LaboratoryStateMachine\**" />
+		<EmbeddedResource Remove="Jobs\ClinicalStateMachineJobs\**" />
+		<EmbeddedResource Remove="Jobs\DicomStateMachineJobs\**" />
+		<EmbeddedResource Remove="Jobs\LaboratoryStateMachineJobs\**" />
+		<EmbeddedResource Remove="StateMachines\ClinicalStateMachine\**" />
+		<EmbeddedResource Remove="StateMachines\LaboratoryStateMachine\**" />
+		<None Remove="Jobs\ClinicalStateMachineJobs\**" />
+		<None Remove="Jobs\DicomStateMachineJobs\**" />
+		<None Remove="Jobs\LaboratoryStateMachineJobs\**" />
+		<None Remove="StateMachines\ClinicalStateMachine\**" />
+		<None Remove="StateMachines\LaboratoryStateMachine\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\AnonymizationService.Application.Contracts\AnonymizationService.Application.Contracts.csproj" />
+		<ProjectReference Include="..\AnonymizationService.Domain.Shared\AnonymizationService.Domain.Shared.csproj" />
+		<ProjectReference Include="..\AnonymizationService.EventTracker\AnonymizationService.EventTracker.csproj" />
+		<ProjectReference Include="..\Porini.Abp.StateMachineEngine\Porini.Abp.StateMachineEngine.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Azure.Identity" Version="1.6.0" />
+		<PackageReference Include="Azure.Storage.Blobs" Version="12.16.0" />
+		<PackageReference Include="Docker.DotNet" Version="3.125.5" />
+		<PackageReference Include="fo-dicom" Version="5.0.3" />
+		<PackageReference Include="Serilog" Version="4.3.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
+		<PackageReference Include="SimpleSOAPClient" Version="2.1.0" />
+		<PackageReference Include="SRace.JUST.net" Version="1.1.0" />
+		<PackageReference Include="System.ServiceModel.Duplex" Version="4.8.1" />
+		<PackageReference Include="System.ServiceModel.Http" Version="4.8.1" />
+		<PackageReference Include="System.ServiceModel.NetTcp" Version="4.8.1" />
+		<PackageReference Include="System.ServiceModel.Primitives" Version="4.8.1" />
+		<PackageReference Include="System.ServiceModel.Security" Version="4.8.1" />
+		<PackageReference Include="S_RACE.Anonymizer.CustomProcessor" Version="1.0.2" />
+		<PackageReference Include="S_RACE.Dicom.Anonymizer.Core" Version="1.0.2" />
+		<PackageReference Include="Volo.Abp.BackgroundJobs.Quartz" Version="6.0.0" />
+		<PackageReference Include="Volo.Abp.Emailing" Version="6.0.0" />
+		<PackageReference Include="Volo.Abp.Identity.Domain" Version="6.0.0" />
+		<PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity" Version="6.0.0" />
+		<PackageReference Include="Volo.Abp.OpenIddict.Domain" Version="6.0.0" />
+		<PackageReference Include="Volo.Abp.PermissionManagement.Domain.OpenIddict" Version="6.0.0" />
+		<PackageReference Include="Volo.Abp.BackgroundJobs.Domain" Version="6.0.0" />
+		<PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="6.0.0" />
+		<PackageReference Include="Volo.Abp.Quartz" Version="6.0.0" />
+		<PackageReference Include="Volo.Abp.TenantManagement.Domain" Version="6.0.0" />
+		<PackageReference Include="Volo.Abp.FeatureManagement.Domain" Version="6.0.0" />
+		<PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="6.0.0" />
+		<PackageReference Include="Hl7.Fhir.R4" Version="4.2.1" />
+		<PackageReference Include="Microsoft.Health.Dicom.Client" Version="8.0.320" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<WCFMetadata Include="Connected Services" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Containers\ContainerOrchestrator\" />
+	</ItemGroup>
+</Project>

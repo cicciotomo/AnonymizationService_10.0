@@ -1,0 +1,38 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "https://localhost:44318",
+      "sslPort": 44318
+    }
+  },
+  "profiles": {
+    "IIS Express": {
+      "commandName": "IISExpress",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Local"
+      }
+    },
+    "AnonymizationService.HttpApi.Host": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Local",
+        "AZURE_CLIENT_SECRET": "Ll58Q~GlNKi8u3gecf-6AUj.-FPtxoG05KAmTagI",
+        "AZURE_CLIENT_ID": "8dfcd604-58e1-4073-bc9b-21ccbbb9880d",
+        "AZURE_TENANT_ID": "ebbb4fc3-587b-477c-a1e8-ee47d8c02546",
+        "APPLICATIONINSIGHTS_CONNECTION_STRING": "InstrumentationKey=aa2b687e-1a51-4399-a0d4-1460bb114a46;IngestionEndpoint=https://westeurope-5.in.applicationinsights.azure.com/;LiveEndpoint=https://westeurope.livediagnostics.monitor.azure.com/",
+        "LOGS_FOLDER": "/as-logs/"
+      }
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "publishAllPorts": true,
+      "useSSL": true
+    }
+  }
+}

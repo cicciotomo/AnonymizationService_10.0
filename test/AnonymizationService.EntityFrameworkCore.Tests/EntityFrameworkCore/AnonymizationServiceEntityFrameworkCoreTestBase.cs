@@ -1,0 +1,6 @@
+﻿namespace AnonymizationService.EntityFrameworkCore;
+
+public abstract class AnonymizationServiceEntityFrameworkCoreTestBase : AnonymizationServiceTestBase<AnonymizationServiceEntityFrameworkCoreTestModule>
+{
+
+}

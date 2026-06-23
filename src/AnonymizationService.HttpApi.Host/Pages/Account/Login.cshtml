@@ -1,0 +1,75 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using AnonymizationService.Localization
+@using Volo.Abp.Account.Settings
+@using Volo.Abp.Settings
+@model Volo.Abp.Account.Web.Pages.Account.LoginModel
+@inject IHtmlLocalizer<AnonymizationServiceApplicationContractsResource> L
+@inject Volo.Abp.Settings.ISettingProvider SettingProvider
+
+<div class="card mt-3 shadow-sm rounded">
+    <div class="card-header">
+        @L["LoginWithBusinessAccount"]
+    </div>
+    <div class="card-body text-center">
+        @if (Model.VisibleExternalProviders.Any())
+        {
+            <form asp-page="./Login" asp-page-handler="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" asp-route-returnUrlHash="@Model.ReturnUrlHash" method="post">
+                <div class="d-grip gap-2">
+                    @foreach (var provider in Model.VisibleExternalProviders)
+                    {
+                        <button type="submit" class="btn btn-primary btn-lg" name="provider" value="@provider.AuthenticationScheme" title="@L["LogInUsingYourProviderAccount", provider.DisplayName]">@L["Login"]</button>
+                    }
+                </div>
+            </form>
+        }
+    </div>
+</div>
+
+<div class="card mt-3 shadow-sm rounded">
+    <div class="card-header pb-3" data-bs-toggle="collapse" href="#external-login-container" role="button" aria-expanded="false" aria-controls="external-login-container">
+        @L["LoginWithLocalAccount"]
+    </div>
+    <div id="external-login-container" class="collapse">
+        <div class="card-body px-5 pb-5">
+            @if (Model.EnableLocalLogin)
+            {
+                <form method="post" class="mt-4">
+                    <div class="mb-3">
+                        <label asp-for="LoginInput.UserNameOrEmailAddress" class="form-label"></label>
+                        <input asp-for="LoginInput.UserNameOrEmailAddress" class="form-control" />
+                        <span asp-validation-for="LoginInput.UserNameOrEmailAddress" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="LoginInput.Password" class="form-label"></label>
+                        <input asp-for="LoginInput.Password" class="form-control" />
+                        <span asp-validation-for="LoginInput.Password" class="text-danger"></span>
+                    </div>
+                    <abp-row>
+                        <abp-column>
+                            <abp-input asp-for="LoginInput.RememberMe" class="mb-4" />
+                        </abp-column>
+                        <abp-column class="text-end">
+                            <a href="@Url.Page("./ForgotPassword", new {returnUrl = Model.ReturnUrl, returnUrlHash = Model.ReturnUrlHash})">@L["ForgotPassword"]</a>
+                        </abp-column>
+                    </abp-row>
+                    <div class="d-grid gap-2">
+                        <abp-button type="submit" button-type="Primary" name="Action" value="Login" class="btn-lg mt-3">@L["Login"]</abp-button>
+                        @if (Model.ShowCancelButton)
+                        {
+                            <abp-button type="submit" button-type="Secondary" formnovalidate="formnovalidate" name="Action" value="Cancel" class="btn-lg mt-3">@L["Cancel"]</abp-button>
+                        }
+                    </div>
+                </form>
+            }
+
+            @if (!Model.EnableLocalLogin && !Model.VisibleExternalProviders.Any())
+            {
+                <div class="alert alert-warning">
+                    <strong>@L["InvalidLoginRequest"]</strong>
+                    @L["ThereAreNoLoginSchemesConfiguredForThisClient"]
+                </div>
+            }
+        </div>
+    </div>
+</div>
