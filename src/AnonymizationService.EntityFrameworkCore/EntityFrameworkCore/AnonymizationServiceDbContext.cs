@@ -76,6 +76,11 @@ public class AnonymizationServiceDbContext :
     public DbSet<IdentitySecurityLog> SecurityLogs { get; set; }
     public DbSet<IdentityLinkUser> LinkUsers { get; set; }
 
+
+    public DbSet<IdentityUserDelegation> UserDelegations { get; set; }
+
+
+
     // Tenant Management
     public DbSet<Tenant> Tenants { get; set; }
     public DbSet<TenantConnectionString> TenantConnectionStrings { get; set; }
