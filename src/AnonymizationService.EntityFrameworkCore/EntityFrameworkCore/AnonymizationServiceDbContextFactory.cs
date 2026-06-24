@@ -16,7 +16,7 @@ public class AnonymizationServiceDbContextFactory : IDesignTimeDbContextFactory<
         var configuration = BuildConfiguration();
 
         var builder = new DbContextOptionsBuilder<AnonymizationServiceDbContext>()
-            .UseSqlServer(configuration.GetConnectionString("AnonymizationServiceDbConnectionString")).EnableSensitiveDataLogging();
+            .UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=SRaceAnonymizationServiceABP7;Integrated Security=True;").EnableSensitiveDataLogging();
 
         return new AnonymizationServiceDbContext(builder.Options);
     }

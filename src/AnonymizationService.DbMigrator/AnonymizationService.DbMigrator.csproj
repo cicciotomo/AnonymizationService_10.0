@@ -5,7 +5,7 @@
 	<PropertyGroup>
 		<OutputType>Exe</OutputType>
 		<TargetFramework>net7.0</TargetFramework>
-		<RuntimeFrameworkVersion>6.0.7</RuntimeFrameworkVersion>
+		
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
 		<DockerfileContext>..\..</DockerfileContext>
 	</PropertyGroup>
@@ -34,7 +34,7 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Extensions.Configuration.AzureAppConfiguration" Version="5.1.0" />
 		<PackageReference Include="Volo.Abp.Autofac" Version="7.0.0" />
-		<PackageReference Include="Microsoft.Extensions.Hosting" Version="6.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
 		<ProjectReference Include="..\AnonymizationService.Application.Contracts\AnonymizationService.Application.Contracts.csproj" />
 		<ProjectReference Include="..\AnonymizationService.EntityFrameworkCore\AnonymizationService.EntityFrameworkCore.csproj" />
 	</ItemGroup>
