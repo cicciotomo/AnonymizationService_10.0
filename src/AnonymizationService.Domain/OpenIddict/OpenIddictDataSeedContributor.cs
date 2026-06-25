@@ -255,7 +255,7 @@ namespace AnonymizationService.OpenIddict
 
                 if (!redirectUri.IsNullOrWhiteSpace() || !postLogoutRedirectUri.IsNullOrWhiteSpace())
                 {
-                    application.Permissions.Add(OpenIddictConstants.Permissions.Endpoints.Logout);
+                    application.Permissions.Add(OpenIddictConstants.Permissions.Endpoints.EndSession);
                 }
 
                 foreach (var grantType in grantTypes)
@@ -305,7 +305,7 @@ namespace AnonymizationService.OpenIddict
                     if (grantType == OpenIddictConstants.GrantTypes.DeviceCode)
                     {
                         application.Permissions.Add(OpenIddictConstants.Permissions.GrantTypes.DeviceCode);
-                        application.Permissions.Add(OpenIddictConstants.Permissions.Endpoints.Device);
+                        application.Permissions.Add(OpenIddictConstants.Permissions.Endpoints.DeviceAuthorization);
                     }
 
                     if (grantType == OpenIddictConstants.GrantTypes.Implicit)

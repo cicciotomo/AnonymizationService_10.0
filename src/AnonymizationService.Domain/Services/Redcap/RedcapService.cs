@@ -13,7 +13,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.Domain.Repositories;
-using AutoMapper.Internal.Mappers;
+
 using Volo.Abp;
 
 namespace AnonymizationService.Services.Redcap
