@@ -78,7 +78,7 @@ public class AnonymizationServiceDbContext :
 
 
     public DbSet<IdentityUserDelegation> UserDelegations { get; set; }
-
+    public DbSet<IdentitySession> Sessions { get; set; }
 
 
     // Tenant Management
