@@ -1,4 +1,5 @@
 ﻿using AnonymizationService.EventTracker;
+using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Account;
 using Volo.Abp.AspNetCore.SignalR;
 using Volo.Abp.AutoMapper;
@@ -21,15 +22,19 @@ namespace AnonymizationService;
     typeof(AbpFeatureManagementApplicationModule),
     typeof(AbpSettingManagementApplicationModule),
     typeof(AnonymizationServiceEventTrackerModule),
-    typeof(AbpAspNetCoreSignalRModule)
+    typeof(AbpAspNetCoreSignalRModule),
+    typeof(AbpAutoMapperModule)
     )]
 public class AnonymizationServiceApplicationModule : AbpModule
 {
     public override void ConfigureServices(ServiceConfigurationContext context)
     {
+        context.Services.AddAutoMapperObjectMapper<AnonymizationServiceApplicationModule>();
+
         Configure<AbpAutoMapperOptions>(options =>
         {
             options.AddMaps<AnonymizationServiceApplicationModule>();
         });
+
     }
 }
