@@ -186,6 +186,8 @@
     "AddPair": "Add Pair",
     "GenerateJsonAndCopy": "Generate Json and Copy to Clipboard",
     "CopiedToClipboard": "Copied to Clipboard",
-    "RemovePair": "Remove Pair"
+    "RemovePair": "Remove Pair",
+
+    "AppName": "AnonymizationService"
   }
 }
