@@ -16,7 +16,7 @@ using Volo.Abp.ObjectMapping;
 
 namespace AnonymizationService.ClinicalDocumentTypes
 {
-    //[Authorize(AnonymizationServicePermissions.PodDefinitionManagementPermission)]
+    [Authorize(AnonymizationServicePermissions.PodDefinitionManagementPermission)]
 
     public class ClinicalDocumentTypeAppService : AnonymizationServiceAppService, IClinicalDocumentTypeAppService
     {
